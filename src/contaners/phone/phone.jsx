@@ -159,9 +159,9 @@ class Phone extends Component{
 
     return (
       <div>
-        <Link  to='/admin/prod_about/add' > <p style={{textAlign:'right',fontSize:15,padding:"0px 15px 15px 0px"}}>  <PlusSquareOutlined />新增商品</p>
-        
-        </Link>
+        <p style={{textAlign:'right',fontSize:15,padding:"0px 15px 15px 0px"}}>    
+          <Link  to='/admin/prod_about/add'><PlusSquareOutlined />新增商品</Link>
+        </p>
         <Table  
           dataSource={this.props.phoneInfo } 
           columns={columns} bordered page='6'
