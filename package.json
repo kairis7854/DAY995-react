@@ -2,7 +2,7 @@
   "name": "antd-demo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "https://kairis7854.github.io/day995-react",
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.4",
