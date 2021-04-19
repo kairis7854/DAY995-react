@@ -6,7 +6,4 @@ export const BASE_URL = ''
 //台北天气接口的AK
 export const WEATHER_AK = 'CWB-A51857CD-196A-466A-9BA1-1F8324410397' 
 //当前城市名
-export const CITY = 'beijing' 
-//表格每页展示条数
-export const PAGE_SIZE = 5
 
