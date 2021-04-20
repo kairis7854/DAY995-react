@@ -74,9 +74,15 @@ class Phone extends Component{
       okType: 'danger',
       cancelText: '取消',
       onOk() {
+        if(_this.state.search){
+          let newSearchDataInfo = [..._this.state.searchDataInfo]
+          newSearchDataInfo = newSearchDataInfo.filter(item=>item.key !== key)
+          _this.setState({searchDataInfo:newSearchDataInfo})
+        }
         let newDataInfo = [..._this.props.phoneInfo]
         newDataInfo = newDataInfo.filter(item=>item.key !== key)
         _this.props.savePhoneInfo(newDataInfo)
+
         message.success('刪除成功')
       },
     });
