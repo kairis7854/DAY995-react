@@ -9,13 +9,11 @@ export default class App extends Component{
   render(){
     return(
       <div className='app'>
-        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route path='/login' component={Login}/>
             <Route path='/admin' component={Admin}/>
             <Redirect to='/admin/home'/>
-          </Switch>
-        </Router>  
+          </Switch> 
       </div>
     )
   }
