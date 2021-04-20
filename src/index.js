@@ -8,7 +8,7 @@ import App from './App';
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter basename={ process.env.PUBLIC_URL }>
+    <BrowserRouter basename={'/day995-react'}>
       <App/>
     </BrowserRouter>
   </Provider>,
