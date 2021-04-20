@@ -9,9 +9,9 @@ export default class App extends Component{
     return(
       <div className='app'>
         <Switch>
-          <Route path='/login' component={Login}/>
-          <Route path='/admin' component={Admin}/>
-          <Redirect to='/admin/home'/>
+          <Route path='/login' component={Login} basename={ process.env.PUBLIC_URL }/>
+          <Route path='/admin' component={Admin} basename={ process.env.PUBLIC_URL }/>
+          <Redirect to='/admin/home' basename={ process.env.PUBLIC_URL }/>
         </Switch>
       </div>
     )
