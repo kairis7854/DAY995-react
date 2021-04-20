@@ -6,6 +6,7 @@ import data from './data.js'
 import {connect} from 'react-redux'
 import {savePhoneInfo} from '../../redux/action/phone_action.js'
 const { confirm } = Modal;
+const { Search } = Input;
 
 @connect(
   state =>({
@@ -19,8 +20,10 @@ class Phone extends Component{
   formRef = React.createRef()
   state = {
       dataInfo:'',
+      searchDataInfo:'',
       upData:'',
       visible:false,
+      search:false,
   }
 
   componentDidMount(){
@@ -77,6 +80,18 @@ class Phone extends Component{
         message.success('刪除成功')
       },
     });
+  }
+
+  //查詢
+  onSearch = (value)=>{
+    let smallValue = value=value.toLowerCase()
+    let {phoneInfo} = this.props 
+    let resArr = [];
+    phoneInfo.filter(item=>{
+        if (item.company.toLowerCase().includes(smallValue) || item.type.toLowerCase().includes(smallValue)) {resArr.push(item);}
+    })
+
+    this.setState({search:true,searchDataInfo:resArr})
   }
 
   render(){
@@ -159,11 +174,14 @@ class Phone extends Component{
 
     return (
       <div>
-        <p style={{textAlign:'right',fontSize:15,padding:"0px 15px 15px 0px"}}>    
-          <Link  to='/admin/prod_about/add'><PlusSquareOutlined />新增商品</Link>
-        </p>
+          <div>    
+            <Space direction="vertical" style={{paddingBottom:10}} >
+             <Search placeholder="請輸入關鍵字(廠牌,型號)" onSearch={this.onSearch} style={{ width:300 }} />
+            </Space>
+            <Link to='/admin/prod_about/add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
+          </div>
         <Table  
-          dataSource={this.props.phoneInfo } 
+          dataSource={this.state.search ? this.state.searchDataInfo : this.props.phoneInfo } 
           columns={columns} bordered page='6'
           pagination={{pageSize:6}}
           rowKey='key'
