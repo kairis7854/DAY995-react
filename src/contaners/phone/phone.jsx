@@ -50,6 +50,11 @@ class Phone extends Component{
   //規格修改
   handleOk=()=>{
     let formData = this.formRef.current.getFieldsValue();
+    if(this.state.search){
+      let newSearchDataInfo = [...this.state.searchDataInfo]
+      newSearchDataInfo = newSearchDataInfo.map(item=>item.key === formData.key ? {...item,...formData} : item)
+      this.setState({searchDataInfo:newSearchDataInfo})
+    }
     let newDataInfo = [...this.props.phoneInfo]
     newDataInfo = newDataInfo.map(item=>item.key === formData.key ? {...item,...formData} : item)
 
