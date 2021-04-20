@@ -13,16 +13,16 @@ import './css/login.less'
   }
 )
 class Login extends Component{
-  
 
   onFinish = (values) => {
-    //密碼驗證
+    //簡易密碼驗證
     const adminCheck = {userName:'admin',pw:'admin'}
  
     if(values.userName && values.pw === adminCheck.userName && adminCheck.pw) {
       this.props.saveUserInfo(values);
       localStorage.setItem('userName',values.userName)
       localStorage.setItem('pw',values.pw)
+      message.success('登錄成功')
       this.props.history.replace('/admin')
     }else{
       message.error('表单输入有误，请检查！')
