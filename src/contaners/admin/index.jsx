@@ -26,6 +26,7 @@ class Admin extends Component{
   render(){
     const {isLogin} = this.props.userInfo
     if(!isLogin) return <Redirect to="/login"/>
+    
     return(
       <div className='layout'>
         <Layout className='layout'>

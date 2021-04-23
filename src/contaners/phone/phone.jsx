@@ -65,7 +65,6 @@ class Phone extends Component{
   }
   handleCancel=()=>{
     this.setState({visible:false})
-  
   }
 
   //刪除功能
@@ -98,8 +97,8 @@ class Phone extends Component{
     let smallValue = value=value.toLowerCase()
     let {phoneInfo} = this.props 
     let resArr = [];
-    phoneInfo.filter(item=>{
-        if (item.company.toLowerCase().includes(smallValue) || item.type.toLowerCase().includes(smallValue)) {resArr.push(item);}
+    phoneInfo.forEach(item=>{
+        if (item.company.toLowerCase().includes(smallValue) || item.type.toLowerCase().includes(smallValue)) resArr.push(item)   
     })
 
     this.setState({search:true,searchDataInfo:resArr})

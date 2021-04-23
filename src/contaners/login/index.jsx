@@ -5,9 +5,7 @@ import {saveUserInfo} from '../../redux/action/login_action.js'
 import './css/login.less'
 
 @connect(
-  state =>({
-    userInfo:state.userInfo
-  }),
+  state =>({}),
   {
     saveUserInfo:saveUserInfo
   }
@@ -18,7 +16,7 @@ class Login extends Component{
     //簡易密碼驗證
     const adminCheck = {userName:'admin',pw:'admin'}
  
-    if(values.userName && values.pw === adminCheck.userName && adminCheck.pw) {
+    if(values.userName === adminCheck.userName && values.pw === adminCheck.pw) {
       this.props.saveUserInfo(values);
       localStorage.setItem('userName',values.userName)
       localStorage.setItem('pw',values.pw)
