@@ -4,6 +4,9 @@ import { Popconfirm, message } from 'antd';
 import {Link,withRouter} from 'react-router-dom'
 import {deleteUserInfo} from '../../../redux/action/login_action.js'
 import dayjs from 'dayjs'
+import menu_config from '../../../config/menu_config.js'
+import PropTypes from 'prop-types'
+import {reqWeather} from '../../../api'
 import './top.less'
 
 
@@ -20,23 +23,65 @@ class Top extends Component{
 
   state={
     day:dayjs().format('YYYY年MM月DD日 HH:mm:ss'),
+    location: PropTypes.object.isRequired,
+    title:'',
+    weather:'',
   }
 
   componentDidMount(){
+    //獲取時間
     this.dataNow = setInterval(()=>{
       this.setState({day:dayjs().format('YYYY年MM月DD日 HH:mm:ss')})
     },1000)
+    
+    //獲取title
+    this.gitTitle()
+    this.props.history.listen(location => {
+      if (this.props.location.pathname !== location.pathname) {
+        this.gitTitle()
+      }
+    })
+
+    //獲取天氣
+    this.getWeather()
   }
 
   componentWillUnmount(){
     clearInterval(this.dataNow)
   }
 
+  //登出
   confirm= () => {
     this.props.deleteUserInfo()
     localStorage.removeItem('userName')
     localStorage.removeItem('pw')
     message.success('登出成功');
+  }
+
+  //獲取title
+  gitTitle = ()=>{
+    let {pathname} = this.props.history.location
+    let titleEng =  pathname.split('/').reverse()[0]
+    if(pathname.indexOf('phone') !== -1) titleEng = 'phone'
+    let newTitle = ''
+
+    menu_config.forEach((item)=>{
+      if(item.children){ 
+        let res = item.children.find((citem)=>{
+          return citem.key === titleEng
+        })
+        if(res) {newTitle = res.title;}
+      }else{
+        if(item.key === titleEng) {newTitle = item.title;}
+      }
+    })
+    this.setState({title:newTitle})
+  }
+
+  //獲取天氣
+  getWeather = async()=>{
+    let res = await reqWeather()
+    this.setState({weather:res})
   }
 
   render(){
@@ -57,7 +102,11 @@ class Top extends Component{
           </p>
         </div>
         <div className='topBottom'>
-          <p>{dayjs().format('YYYY年MM月DD日 HH:mm:ss')  }</p>
+          <div className='top-Bottom-left'>{this.state.title}</div>
+          <p className='top-Bottom-right'>
+            {dayjs().format('YYYY年MM月DD日 HH:mm:ss')}<br/>
+            {this.state.weather}
+            </p>
         </div>
       </div>
     )

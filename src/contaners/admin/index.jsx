@@ -43,9 +43,9 @@ class Admin extends Component{
             <Content className="content">
               <Switch>
                 <Route path='/admin/home' component={Home}/>
-                <Route path='/admin/prod_about/phone' component={Phone}/>
+                <Route path='/admin/prod_about/phone' component={Phone} exact/>
                 <Route path='/admin/prod_about/laptop' component={Laptop}/>
-                <Route path='/admin/prod_about/add' component={Add}/>
+                <Route path='/admin/prod_about/phone/add' component={Add}/>
                 <Route path='/admin/user' component={User}/>
                 <Route path='/admin/charts/bar' component={Bar}/>
                 <Route path='/admin/charts/line' component={Line}/>

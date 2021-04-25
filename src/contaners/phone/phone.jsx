@@ -188,7 +188,7 @@ class Phone extends Component{
             <Space direction="vertical" style={{paddingBottom:10}} >
              <Search placeholder="請輸入關鍵字(廠牌,型號)" onSearch={this.onSearch} style={{ width:300 }} />
             </Space>
-            <Link to='/admin/prod_about/add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
+            <Link to='/admin/prod_about/phone/add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
           </div>
         <Table  
           dataSource={this.state.search ? this.state.searchDataInfo : this.props.phoneInfo } 
