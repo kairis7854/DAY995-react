@@ -8,8 +8,7 @@ import menu_config from '../../../config/menu_config.js'
 import PropTypes from 'prop-types'
 import {reqWeather} from '../../../api'
 import './top.less'
-
-
+let UNLISTEN 
 
 @connect(
   state=>({
@@ -28,27 +27,33 @@ class Top extends Component{
     weather:'',
   }
 
+
   componentDidMount(){
     //獲取時間
     this.dataNow = setInterval(()=>{
       this.setState({day:dayjs().format('YYYY年MM月DD日 HH:mm:ss')})
     },1000)
-    
+
     //獲取title
     this.gitTitle()
-    this.props.history.listen(location => {
+    UNLISTEN = this.props.history.listen(location => {
       if (this.props.location.pathname !== location.pathname) {
         this.gitTitle()
       }
     })
-
+ 
     //獲取天氣
     this.getWeather()
   }
 
   componentWillUnmount(){
+    //停止獲取時間
     clearInterval(this.dataNow)
+
+    //停止監聽地址
+    UNLISTEN && UNLISTEN()
   }
+
 
   //登出
   confirm= () => {
