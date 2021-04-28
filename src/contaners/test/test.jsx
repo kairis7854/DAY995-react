@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Row,Col,Form,Input,Button,Divider } from 'antd'
+import {Row,Col,Form,Input,Button } from 'antd'
 import './test.less'
 
 export default class Test extends Component{
