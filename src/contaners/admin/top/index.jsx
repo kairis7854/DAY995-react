@@ -43,7 +43,7 @@ class Top extends Component{
     })
  
     //獲取天氣
-    this.getWeather()
+    //this.getWeather()
   }
 
   componentWillUnmount(){

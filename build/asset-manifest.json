@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/day995-react/static/css/main.7544e6f6.chunk.css",
-    "main.js": "/day995-react/static/js/main.e8691ca7.chunk.js",
-    "main.js.map": "/day995-react/static/js/main.e8691ca7.chunk.js.map",
+    "main.css": "/day995-react/static/css/main.84652b77.chunk.css",
+    "main.js": "/day995-react/static/js/main.010b64b0.chunk.js",
+    "main.js.map": "/day995-react/static/js/main.010b64b0.chunk.js.map",
     "runtime-main.js": "/day995-react/static/js/runtime-main.b09d9908.js",
     "runtime-main.js.map": "/day995-react/static/js/runtime-main.b09d9908.js.map",
     "static/js/2.61153649.chunk.js": "/day995-react/static/js/2.61153649.chunk.js",
     "static/js/2.61153649.chunk.js.map": "/day995-react/static/js/2.61153649.chunk.js.map",
     "index.html": "/day995-react/index.html",
-    "static/css/main.7544e6f6.chunk.css.map": "/day995-react/static/css/main.7544e6f6.chunk.css.map",
+    "static/css/main.84652b77.chunk.css.map": "/day995-react/static/css/main.84652b77.chunk.css.map",
     "static/js/2.61153649.chunk.js.LICENSE.txt": "/day995-react/static/js/2.61153649.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b09d9908.js",
     "static/js/2.61153649.chunk.js",
-    "static/css/main.7544e6f6.chunk.css",
-    "static/js/main.e8691ca7.chunk.js"
+    "static/css/main.84652b77.chunk.css",
+    "static/js/main.010b64b0.chunk.js"
   ]
 }

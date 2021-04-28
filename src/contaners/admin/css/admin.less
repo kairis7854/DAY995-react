@@ -4,6 +4,7 @@ html,body{
   #root{
     width: 100%;
     height: 100%;
+    overflow: auto;
     .app{
       width: 100%;
       height: 100%;
@@ -11,29 +12,30 @@ html,body{
   }
 }
 
-.layout{
+.wrap{
+  width: 100%;
   height: 100%;
+  min-width:1200px;
+  min-height:880px;
+  .Layout{
+    height: 100%;
+    width: 100%;
+    .right{
+      background:linear-gradient(to top right , #233236, #658D8F)!important;
+      .top{
+        height:104px;
+        padding:0px!important;
+        background:none!important;
+      }
+      .content{
+        margin-top:100px;
+        margin: 30px;
+        padding : 30px;
+        min-Height: 280px;
+        background:white;
+
+      }
+    }
+  }
 }
 
-.right{
-  background:linear-gradient(to top right , #233236, #658D8F)!important;
-}
-
-.sider{
-  // height: 1000px;
-  
-}
-
-.top{
-  height:104px;
-  padding:0px!important;
-  background:none!important;
-}
-
-.content{
-  margin-top:100px;
-  margin: 30px;
-  padding : 30px;
-  min-Height: 280px;
-  background:white;
-}

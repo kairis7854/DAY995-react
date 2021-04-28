@@ -28,10 +28,10 @@ class Admin extends Component{
     if(!isLogin) return <Redirect to="/login"/>
     
     return(
-      <div className='layout'>
-        <Layout className='layout'>
+      <div className='wrap'>
+        <Layout className='Layout'>
           {/* 菜單 */}
-          <Sider className='sider'>
+          <Sider >
            <Nav/>
           </Sider>
           <Layout  className='right'>
