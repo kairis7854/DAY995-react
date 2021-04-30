@@ -17,11 +17,11 @@ class User extends Component{
   }
 
   componentDidMount(){
-    this.getdata()
+    this.getData()
   }
 
   //獲取渲染列表的資料
-  getdata =()=>{
+  getData =()=>{
     let userInfo = [];
     for(var i=0; i<localStorage.length;i++){
       let res = JSON.parse(localStorage.getItem(localStorage.key(i)))
@@ -47,7 +47,7 @@ class User extends Component{
       cancelText: '取消',
       onOk() {
         localStorage.removeItem(item.userName)
-        _this.getdata()
+        _this.getData()
         message.success('刪除成功')
       },
     });
@@ -55,7 +55,7 @@ class User extends Component{
 
   setVisible =(bool)=>{
     this.setState({visible:bool})
-    this.getdata()
+    this.getData()
   }
 
   render(){

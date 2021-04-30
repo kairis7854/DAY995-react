@@ -15,7 +15,7 @@ class Login extends Component{
 
   componentDidMount(){
     //創建admin
-    let admin = localStorage.getItem('admin');
+    let admin = localStorage.getItem('admin') ? localStorage.getItem('admin') : null
     if(!admin){
       const adminInfo = {key:'admin',userName:'admin',password:'admin',Email:'Admin@gmail.com',Phone:'0912345678',roler:['超級管理員']}
       let str = JSON.stringify(adminInfo)

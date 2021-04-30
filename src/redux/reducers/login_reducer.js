@@ -1,9 +1,6 @@
 import {SAVE_USER_INFO} from '../action_type.js'
 import {DELETE_USER_INFO} from '../action_type.js'
 
-
-
-
 let userName = JSON.parse(localStorage.getItem("isLogin"))
 let password = JSON.parse(localStorage.getItem("isLogin"))
 

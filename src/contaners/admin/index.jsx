@@ -21,7 +21,6 @@ const { Header, Sider, Content } = Layout;
   {}
 )
 class Admin extends Component{
-
   
   render(){
     const {isLogin} = this.props.userInfo
