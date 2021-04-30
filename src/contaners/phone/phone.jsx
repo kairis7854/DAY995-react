@@ -48,7 +48,7 @@ class Phone extends Component{
   }
 
   //規格修改
-  handleOk=()=>{
+  handleOk= () => {
     let formData = this.formRef.current.getFieldsValue();
     if(this.state.search){
       let newSearchDataInfo = [...this.state.searchDataInfo]
@@ -94,13 +94,12 @@ class Phone extends Component{
 
   //查詢
   onSearch = (value)=>{
-    let smallValue = value=value.toLowerCase()
+    let smallValue = value.toLowerCase()
     let {phoneInfo} = this.props 
     let resArr = [];
     phoneInfo.forEach(item=>{
         if (item.company.toLowerCase().includes(smallValue) || item.type.toLowerCase().includes(smallValue)) resArr.push(item)   
     })
-
     this.setState({search:true,searchDataInfo:resArr})
   }
 
@@ -188,7 +187,7 @@ class Phone extends Component{
             <Space direction="vertical" style={{paddingBottom:10}} >
              <Search placeholder="請輸入關鍵字(廠牌,型號)" onSearch={this.onSearch} style={{ width:300 }} />
             </Space>
-            <Link to='/admin/prod_about/phone/add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
+            <Link to='/admin/prod_about/phone/phone-add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
           </div>
         <Table  
           dataSource={this.state.search ? this.state.searchDataInfo : this.props.phoneInfo } 
@@ -243,5 +242,4 @@ class Phone extends Component{
     )
   }
 }
-
 export default Phone

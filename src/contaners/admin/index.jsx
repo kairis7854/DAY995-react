@@ -10,7 +10,7 @@ import Line from '../line/line'
 import Pie from '../pie/pie'
 import Nav from './nav'
 import Top from './top'
-import Add from '../add/add'
+import PhoneAdd from '../phone-add/phone-add'
 import {connect} from 'react-redux'
 import './css/admin.less'
 
@@ -26,7 +26,6 @@ class Admin extends Component{
   render(){
     const {isLogin} = this.props.userInfo
     if(!isLogin) return <Redirect to="/login"/>
-    
     return(
       <div className='wrap'>
         <Layout className='Layout'>
@@ -45,7 +44,7 @@ class Admin extends Component{
                 <Route path='/admin/home' component={Home}/>
                 <Route path='/admin/prod_about/phone' component={Phone} exact/>
                 <Route path='/admin/prod_about/laptop' component={Laptop}/>
-                <Route path='/admin/prod_about/phone/add' component={Add}/>
+                <Route path='/admin/prod_about/phone/phone-add' component={PhoneAdd}/>
                 <Route path='/admin/user' component={User}/>
                 <Route path='/admin/charts/bar' component={Bar}/>
                 <Route path='/admin/charts/line' component={Line}/>

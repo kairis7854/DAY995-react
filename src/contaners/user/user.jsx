@@ -1,14 +1,69 @@
 import React,{Component} from 'react'
-import { Table, Tag, Space } from 'antd';
+import { Table, Tag, Space,Button,message,Modal } from 'antd';
+import {ExclamationCircleOutlined,PlusSquareOutlined  } from '@ant-design/icons';
+import UserAdd from '../user-add/user-add.jsx'
+import {connect} from 'react-redux'
+import './user.less'
+const { confirm } = Modal;
 
-export default class User extends Component{
+@connect(
+  state =>({userInfo:state.userInfo})
+  ,{}
+)
+class User extends Component{
+  state={
+    visible:false,
+    userInfo:'',
+  }
+
+  componentDidMount(){
+    this.getdata()
+  }
+
+  //獲取渲染列表的資料
+  getdata =()=>{
+    let userInfo = [];
+    for(var i=0; i<localStorage.length;i++){
+      let res = JSON.parse(localStorage.getItem(localStorage.key(i)))
+      if(localStorage.key(i) !== 'isLogin') userInfo.push(res)
+    }
+    this.setState({userInfo})
+  }
+
+  //新增用戶彈窗
+  onClick = ()=>{
+    this.setState({visible:true})
+  }
+
+  //刪除
+  onDelete = (item)=>{
+    const _this = this
+    confirm({
+      title: '注意:',
+      icon: <ExclamationCircleOutlined />,
+      content: '確定要刪除嗎?',
+      okText: '確定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        localStorage.removeItem(item.userName)
+        _this.getdata()
+        message.success('刪除成功')
+      },
+    });
+  }
+
+  setVisible =(bool)=>{
+    this.setState({visible:bool})
+    this.getdata()
+  }
 
   render(){
     const columns = [
       {
         title: '帳號',
-        dataIndex: 'name',
-        key: 'name',
+        dataIndex: 'userName',
+        key: 'userName',
         render: text => <div>{text}</div>,
       },
       {
@@ -23,68 +78,45 @@ export default class User extends Component{
       },
       {
         title: '角色',
-        key: 'tags',
-        dataIndex: 'tags',
-        render: tags => (
+        key: 'roler',
+        dataIndex: 'roler',
+        render: roler => (
           <>
-            {tags.map(tag => {
-              let color = tag.length > 5 ? 'geekblue' : 'green';
-              if (tag === '超級管理員') {
+            {roler.map(roler => {
+              let color = roler.length > 5 ? 'geekblue' : 'green';
+              if (roler === "超級管理員") {
                 color = 'purple';
               }
-              if (tag === '產品顧問') {
-                color = 'blue';
-              }
               return (
-                <Tag color={color} key={tag}>
-                  {tag.toUpperCase()}
+                <Tag color={color} key={roler}>
+                  {roler.toUpperCase()}
                 </Tag>
               );
             })}
           </>
         ),
       },
-      {
+    ];
+    if(this.props.userInfo.userName === 'admin'){
+      columns.push({
         title: '操作',
         key: 'action',
-        render: (text, record) => (
+        render: (item) => (
           <Space size="middle">
-            <div>修改</div>
-            <div>刪除</div>
+              <div>修改</div>
+              <Button type='link' onClick={()=>{this.onDelete(item)}} >刪除</Button>
           </Space>
-        ),
-      },
-    ];
-
-    const data = [
-      {
-        key: '1',
-        name: 'Admin',
-        Email: 'Admin@gmail.com',
-        Phone: '0912345678',
-        tags: ['超級管理員'],
-      },
-      {
-        key: '2',
-        name: 'Youssef',
-        Email: 'Youssef@gmail.com',
-        Phone: '0911115678',
-        tags: ['商品銷售員'],
-      },
-      {
-        key: '3',
-        name: 'Paola',
-        Email: 'Paola@gmail.com',
-        Phone: '0912341111',
-        tags: ['產品顧問'],
-      },
-    ];
-
-
+        )
+      })
+    }
+ 
     return (
-      <div>
-        <Table columns={columns} dataSource={data} bordered />
+      <div  className='user-wrap'>
+        <Button type='link' className='user-Button' onClick={this.onClick}><PlusSquareOutlined/>新增用戶</Button>
+        <Table columns={columns} dataSource={this.state.userInfo} bordered pagination={{pageSize:6}}/>
+        <UserAdd visible={this.state.visible} setVisible={(bool)=>{this.setVisible(bool)}}/>
       </div>
     )
   }
 }
+export default User

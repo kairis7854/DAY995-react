@@ -43,7 +43,7 @@ class Top extends Component{
     })
  
     //獲取天氣
-    this.getWeather()
+    //this.getWeather()
   }
 
   componentWillUnmount(){
@@ -58,8 +58,7 @@ class Top extends Component{
   //登出
   confirm= () => {
     this.props.deleteUserInfo()
-    localStorage.removeItem('userName')
-    localStorage.removeItem('pw')
+    localStorage.removeItem('isLogin')
     message.success('登出成功');
   }
 
