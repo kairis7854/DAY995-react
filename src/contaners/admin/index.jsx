@@ -30,7 +30,7 @@ class Admin extends Component{
         <Layout className='Layout'>
           {/* 菜單 */}
           <Sider >
-           <Nav/>
+            <Nav/>
           </Sider>
           <Layout  className='right'>
             {/* 頂部 */}

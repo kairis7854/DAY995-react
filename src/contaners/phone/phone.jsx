@@ -183,12 +183,12 @@ class Phone extends Component{
 
     return (
       <div>
-          <div>    
-            <Space direction="vertical" style={{paddingBottom:10}} >
-             <Search placeholder="請輸入關鍵字(廠牌,型號)" onSearch={this.onSearch} style={{ width:300 }} />
-            </Space>
-            <Link to='/admin/prod_about/phone/phone-add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
-          </div>
+        <div>    
+          <Space direction="vertical" style={{paddingBottom:10}} >
+            <Search placeholder="請輸入關鍵字(廠牌,型號)" onSearch={this.onSearch} style={{ width:300 }} />
+          </Space>
+          <Link to='/admin/prod_about/phone/phone-add' style={{float:'right',fontSize:18,padding:'5px 20px 0px 0px'}}><PlusSquareOutlined />新增商品</Link>
+        </div>
         <Table  
           dataSource={this.state.search ? this.state.searchDataInfo : this.props.phoneInfo } 
           columns={columns} bordered page='6'
