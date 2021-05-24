@@ -14,11 +14,11 @@ function beforeUpload(file) {
   if (!isJpgOrPng) {
     message.error('圖片類型限制為JPG與PNG檔');
   }
-  const isLt2M = file.size / 1024 / 1024 < 2;
-  if (!isLt2M) {
-    message.error('檔案大小必須小於 2MB!');
+  const isLt20KB = file.size / 1024 / 1024 < 0.02;
+  if (!isLt20KB) {
+    message.error('檔案大小必須小於 20kb!');
   }
-  return isJpgOrPng && isLt2M;
+  return isJpgOrPng && isLt20KB;
 }
 
 const LaptopAdd = (props) => {
