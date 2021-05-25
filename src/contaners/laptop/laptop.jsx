@@ -110,27 +110,29 @@ const Laptop = () =>{
         <Search placeholder="請輸入關鍵字(廠牌,型號)" onSearch={onSearch} className='laptop-search'/>
         <Button type='link' onClick={add}><PlusSquareOutlined/>新增商品</Button>
       </div>
-      <ul className='laptop-ul'>
-        {
-          data.map((item,index)=>{
-            if(searchValue(item)){
-              return(
-                <li key={index} className='laptop-li'>
-                    <div className='laptop-img'>
-                      <img src={item.imageUrl || errPic} alt='img' />
-                    </div>
-                    <p >{item.name}</p>
-                    <p>網路價：{item.price}</p>
-                    <button onClick={()=>{upData(item)}}>修改</button>
-                    <button onClick={()=>{showDeleteConfirm(item)}}>刪除</button>
-                </li>
-              )
-            }else{
-              return null
-            }
-          })
-        }
-      </ul>
+      <div className='laptop-content'>
+        <ul className='laptop-ul'>
+          {
+            data.map((item,index)=>{
+              if(searchValue(item)){
+                return(
+                  <li key={index} className='laptop-li'>
+                      <div className='laptop-img'>
+                        <img src={item.imageUrl || errPic} alt='img' />
+                      </div>
+                      <p >{item.name}</p>
+                      <p>網路價：{item.price}</p>
+                      <Button onClick={()=>{upData(item)}}>修改</Button>
+                      <Button onClick={()=>{showDeleteConfirm(item)}}>刪除</Button>
+                  </li>
+                )
+              }else{
+                return null
+              }
+            })
+          }
+        </ul>
+      </div>
       <Modal title={`${title}商品`} visible={visible} onOk={()=>{handleOk()}} onCancel={handleCancel} okText='確定' cancelText='取消'>
         <LaptopAdd visible={visible} getFormData={getFormData} lapTop={lapTop}/>
       </Modal>

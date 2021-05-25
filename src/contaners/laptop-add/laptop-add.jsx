@@ -88,7 +88,7 @@ const LaptopAdd = (props) => {
           {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
         </Upload>
         <p>商品：<Input type="text" className='LaptopAdd-input' value={name} onChange={changeName.bind(this)} /></p>
-        <p>價格：<Input type="text" className='LaptopAdd-input' value={price} onChange={changePrice.bind(this)}/></p>
+        <p>價格：<Input type="text" className='LaptopAdd-input' value={price} maxLength="10" onChange={changePrice.bind(this)}/></p>
     </form>
   );
 }
